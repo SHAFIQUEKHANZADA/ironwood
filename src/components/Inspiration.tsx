@@ -22,7 +22,7 @@ export default function Inspiration() {
               <h2 className="font-display text-3xl font-bold italic text-ink sm:text-4xl">
                 Get Inspired!
               </h2>
-              <div className="mt-4 h-0.5 w-12 bg-wine" />
+              <div className="mt-4 h-0.5 w-12 bg-forest" />
               <p className="mt-5 text-lg leading-relaxed text-slate">
                 Get a first look at new arrivals, seasonal packages and setup
                 ideas for your next event or shoot.
@@ -44,11 +44,11 @@ export default function Inspiration() {
                   type="email"
                   required
                   placeholder="your@email.com"
-                  className="h-12 w-full shrink-0 rounded-sm border border-black/15 px-4 text-base text-ink outline-none transition focus:border-wine focus:ring-2 focus:ring-wine/20 sm:flex-1"
+                  className="h-12 w-full shrink-0 rounded-sm border border-black/15 px-4 text-base text-ink outline-none transition focus:border-forest focus:ring-2 focus:ring-forest/20 sm:flex-1"
                 />
                 <button
                   type="submit"
-                  className="h-12 shrink-0 rounded-sm bg-wine px-7 text-base font-semibold text-white transition hover:bg-wine-soft"
+                  className="h-12 shrink-0 rounded-sm bg-forest px-7 text-base font-semibold text-white transition hover:bg-forest-soft"
                 >
                   Sign Up
                 </button>

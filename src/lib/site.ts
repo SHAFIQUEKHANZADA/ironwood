@@ -1,126 +1,158 @@
 // Central place for company details and site content.
 
 export const company = {
-  name: "Ironwood Films & Event Rentals",
+  name: "Ironwood Film & Event Rentals",
   shortName: "Ironwood",
   email: "iwfilmrentals@gmail.com",
   phone: "778-385-1498",
   phoneHref: "tel:+17783851498",
   serviceArea: "Serving the Lower Mainland & British Columbia",
-  established: "British Columbia",
+  tagline: "Equipment. Experience. Excellence.",
 };
 
 export const navLinks = [
-  { label: "New", href: "#catalog" },
-  { label: "Rental Catalog", href: "#catalog" },
-  { label: "Linens", href: "#catalog" },
-  { label: "Services", href: "#services" },
-  { label: "Inspiration", href: "#inspiration" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Event Rentals", href: "/event-rentals" },
+  { label: "Film's Tent Rental", href: "/film-tent-rental" },
+  { label: "Our Work", href: "/#portfolio" },
+  { label: "Services", href: "/#services" },
+  { label: "About", href: "/#about" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export type Category = {
   name: string;
   slug: string;
   blurb: string;
-  /** icon key mapped in CategoryCard */
+  /** icon key mapped in Icon.tsx */
   icon: string;
   /**
-   * Two-stop gradient used as the card's panel background. The photo at
-   * /public/categories/<slug>.jpg sits on top of it; this shows through while
-   * the image loads.
+   * Two-stop gradient used as the card's panel background. It shows through
+   * while the photo loads, and stands in entirely when there is no photo yet.
    */
   gradient: [string, string];
+  /**
+   * Photo under /public/categories/. Omit when we don't have a real photo for
+   * this line yet — the card then renders the branded gradient + icon instead
+   * of a misleading stock image. Drop a file in and add the path to upgrade it.
+   */
+  image?: string;
 };
 
-// A film + event rental mix, styled after a classic rental-catalog grid.
-export const categories: Category[] = [
+export type RentalTrack = {
+  key: "event" | "film";
+  name: string;
+  /** url slug — each track gets its own page at /<slug> */
+  slug: string;
+  blurb: string;
+  icon: string;
+  image: string;
+  categories: Category[];
+};
+
+/**
+ * The two rental tracks the business is organised around. Tents and heaters
+ * intentionally appear in both — the same inventory serves both markets.
+ */
+export const tracks: RentalTrack[] = [
   {
-    name: "Tables",
-    slug: "tables",
-    blurb: "Rounds, banquets, farmhouse & cocktail",
-    icon: "table",
-    gradient: ["#7a3347", "#3d1622"],
-  },
-  {
-    name: "Chairs",
-    slug: "chairs",
-    blurb: "Chiavari, folding, lounge & ghost",
-    icon: "chair",
-    gradient: ["#6b7787", "#2c3744"],
-  },
-  {
-    name: "Linens + Napkins",
-    slug: "linens",
-    blurb: "Tablecloths, runners, drapery & napkins",
-    icon: "linen",
-    gradient: ["#8a5a6b", "#4a2230"],
-  },
-  {
-    name: "China + Glassware",
-    slug: "china-glassware",
-    blurb: "Plates, flatware, stemware & barware",
-    icon: "plate",
-    gradient: ["#5f6b7a", "#2b333f"],
-  },
-  {
-    name: "Tents + Structures",
-    slug: "tents",
-    blurb: "Frame tents, sailcloth, sidewalls & flooring",
+    key: "event",
+    name: "Event Rentals",
+    slug: "event-rentals",
+    blurb:
+      "Tents, tables, chairs, linens and more for weddings, parties and corporate events.",
     icon: "tent",
-    gradient: ["#6b4a3a", "#2f2018"],
+    image: "/inspiration.jpg",
+    categories: [
+      {
+        name: "Tents",
+        slug: "tent",
+        blurb: "Frame tents, sailcloth, sidewalls & flooring",
+        icon: "tent",
+        gradient: ["#2f5c4c", "#12271f"],
+        image: "/categories/tent.jpg",
+      },
+      {
+        name: "Tables",
+        slug: "tables",
+        blurb: "Rounds, banquets, farmhouse & cocktail",
+        icon: "table",
+        gradient: ["#3c6b57", "#163128"],
+        image: "/categories/tables.jpg",
+      },
+      {
+        name: "Chairs",
+        slug: "chairs",
+        blurb: "Chiavari, folding, lounge & ghost",
+        icon: "chair",
+        gradient: ["#4a7a63", "#1c3a30"],
+        image: "/categories/chairs.jpg",
+      },
+      {
+        name: "Linens",
+        slug: "linens",
+        blurb: "Tablecloths, runners, drapery & napkins",
+        icon: "linen",
+        gradient: ["#5a8570", "#20402f"],
+        image: "/categories/linens.jpg",
+      },
+      {
+        name: "Heaters",
+        slug: "heaters",
+        blurb: "Patio heaters, fans & climate control",
+        icon: "heat",
+        gradient: ["#6b5a2f", "#2f2712"],
+        image: "/categories/heaters.jpg",
+      },
+      {
+        name: "Bars",
+        slug: "bars",
+        blurb: "Portable bars, coolers & service carts",
+        icon: "bar",
+        gradient: ["#3f5f70", "#1a2b33"],
+        image: "/categories/bars.jpg",
+      },
+    ],
   },
   {
-    name: "Staging + Dance Floors",
-    slug: "staging",
-    blurb: "Modular stages, risers & parquet floors",
-    icon: "stage",
-    gradient: ["#53688f", "#1f2a48"],
-  },
-  {
-    name: "Lighting",
-    slug: "lighting",
-    blurb: "Uplighting, string lights, spots & control",
-    icon: "light",
-    gradient: ["#8a6a2f", "#3d2e12"],
-  },
-  {
-    name: "Audio + Visual",
-    slug: "audio-visual",
-    blurb: "PA, mics, projectors, LED walls & screens",
-    icon: "av",
-    gradient: ["#2f5a6b", "#12303d"],
-  },
-  {
-    name: "Film Production Gear",
-    slug: "film-production",
-    blurb: "Grip, electric, stands, flags & apple boxes",
-    icon: "film",
-    gradient: ["#5a5a5a", "#1e1e1e"],
-  },
-  {
-    name: "Décor + Props",
-    slug: "decor",
-    blurb: "Backdrops, arches, candleholders & signage",
-    icon: "decor",
-    gradient: ["#7a3347", "#4a2230"],
-  },
-  {
-    name: "Heating + Cooling",
-    slug: "climate",
-    blurb: "Patio heaters, fans, coolers & generators",
-    icon: "heat",
-    gradient: ["#6b3a2f", "#2f1712"],
-  },
-  {
-    name: "Bars + Catering",
-    slug: "bars-catering",
-    blurb: "Portable bars, chafers, coolers & carts",
-    icon: "bar",
-    gradient: ["#6a6a80", "#2b2b3a"],
+    key: "film",
+    name: "Film's Tent Rental",
+    slug: "film-tent-rental",
+    blurb:
+      "Tents, heat and ground protection for productions of every size, across the Lower Mainland.",
+    icon: "clapper",
+    image: "/categories/film-production.jpg",
+    categories: [
+      {
+        name: "Tents",
+        slug: "tent",
+        blurb: "Crew shelter, basecamp & catering tents",
+        icon: "tent",
+        gradient: ["#2f5c4c", "#12271f"],
+        image: "/categories/tent.jpg",
+      },
+      {
+        name: "Heaters",
+        slug: "heaters",
+        blurb: "Keep cast and crew warm on location",
+        icon: "heat",
+        gradient: ["#6b5a2f", "#2f2712"],
+        image: "/categories/heaters.jpg",
+      },
+      {
+        name: "Ground Protection Mats",
+        slug: "ground-protection-mats",
+        blurb: "Turf protection, trackway & vehicle access",
+        icon: "mat",
+        gradient: ["#3c6b57", "#12271f"],
+        // No photo yet — add /public/categories/ground-protection-mats.jpg
+        // and set `image` here to swap the fallback for a real shot.
+      },
+    ],
   },
 ];
+
+/** Flat list of every category, for the footer and search suggestions. */
+export const allCategories: Category[] = tracks.flatMap((t) => t.categories);
 
 export const services = [
   {
@@ -130,7 +162,7 @@ export const services = [
   },
   {
     title: "Setup & Installation",
-    desc: "Professional installation of tents, staging, lighting and production gear by an experienced crew.",
+    desc: "Professional installation of tents, heaters, flooring and production gear by an experienced crew.",
     icon: "wrench",
   },
   {
@@ -140,7 +172,7 @@ export const services = [
   },
   {
     title: "Film & Photo Support",
-    desc: "Grip, electric and set-dressing rentals with flexible terms for productions of every size.",
+    desc: "Location support with flexible terms for productions of every size.",
     icon: "clapper",
   },
 ];

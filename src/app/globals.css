@@ -1,38 +1,42 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   Ironwood Films & Event Rentals — brand theme
-   Deep wine/burgundy primary, warm charcoal ink, champagne accent.
+   Ironwood Film & Event Rentals — brand theme
+
+   Deep forest green + antique gold, drawn from the logo artwork.
+   Dark green is the primary surface; gold carries every accent and CTA.
 --------------------------------------------------------------------------- */
 :root {
   --background: #ffffff;
   --foreground: #23272e;
 
-  --wine: #5b2333;      /* primary burgundy (top bar / brand) */
-  --wine-dark: #3d1622; /* darker burgundy for gradients/hover */
-  --wine-soft: #7a3347; /* lighter burgundy accents */
+  --forest: #1c3a30;      /* primary deep green (dark sections, buttons) */
+  --forest-dark: #12271f; /* deeper green for gradients/hover */
+  --forest-soft: #2f5c4c; /* lighter green accents */
 
-  --ink: #1f2a37;       /* headings on light */
-  --slate: #4b5563;     /* body text */
-  --champagne: #c9a86a; /* gold/champagne accent */
-  --cream: #f6f2ec;     /* warm off-white section bg */
-  --accent: #1a73e8;    /* bright blue CTA (per reference) */
-  --accent-dark: #1560c4;
+  --ink: #16241e;         /* headings on light — green-leaning charcoal */
+  --slate: #4b5563;       /* body text */
+
+  --gold: #d0a54e;        /* antique gold accent + CTAs */
+  --gold-dark: #b0873a;   /* gold hover */
+  --gold-soft: #e3c07d;   /* light gold for hairlines//text on dark */
+
+  --cream: #f7f4ee;       /* warm off-white section bg */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --color-wine: var(--wine);
-  --color-wine-dark: var(--wine-dark);
-  --color-wine-soft: var(--wine-soft);
+  --color-forest: var(--forest);
+  --color-forest-dark: var(--forest-dark);
+  --color-forest-soft: var(--forest-soft);
   --color-ink: var(--ink);
   --color-slate: var(--slate);
-  --color-champagne: var(--champagne);
+  --color-gold: var(--gold);
+  --color-gold-dark: var(--gold-dark);
+  --color-gold-soft: var(--gold-soft);
   --color-cream: var(--cream);
-  --color-accent: var(--accent);
-  --color-accent-dark: var(--accent-dark);
 
   --font-sans: var(--font-inter);
   --font-display: var(--font-playfair);
@@ -41,7 +45,7 @@
 html {
   scroll-behavior: smooth;
   /* offset for the sticky header when jumping to #anchors */
-  scroll-padding-top: 160px;
+  scroll-padding-top: 120px;
 }
 
 body {
@@ -49,11 +53,4 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
-}
-
-/* Category card photographic placeholder. Real photography can be dropped in
-   later by setting a background-image on the same element. */
-.card-photo {
-  background-size: cover;
-  background-position: center;
 }

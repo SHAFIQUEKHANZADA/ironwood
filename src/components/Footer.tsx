@@ -1,36 +1,33 @@
 import Link from "next/link";
 import Icon from "./Icon";
-import { categories, company } from "@/lib/site";
+import { company, tracks } from "@/lib/site";
 
 export default function Footer() {
-  const half = Math.ceil(categories.length / 2);
-  const columns = [categories.slice(0, half), categories.slice(half)];
-
   return (
     <footer className="bg-cream pt-16">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-10 pb-14 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Products */}
-          <div className="sm:col-span-2">
-            <h3 className="text-sm font-bold uppercase tracking-wide text-ink">
-              Products
-            </h3>
-            <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-2">
-              {columns.map((col, i) => (
-                <ul key={i} className="space-y-2">
-                  {col.map((c) => (
-                    <li key={c.slug}>
+          {/* One column per rental track, mirroring the page structure */}
+          <div className="grid gap-10 sm:col-span-2 sm:grid-cols-2">
+            {tracks.map((track) => (
+              <div key={track.key}>
+                <h3 className="text-sm font-bold uppercase tracking-wide text-ink">
+                  {track.name}
+                </h3>
+                <ul className="mt-5 space-y-2">
+                  {track.categories.map((c) => (
+                    <li key={`${track.key}-${c.slug}`}>
                       <Link
-                        href="#catalog"
-                        className="text-sm text-slate transition hover:text-wine"
+                        href={`/rentals/${c.slug}`}
+                        className="text-sm text-slate transition hover:text-forest"
                       >
                         {c.name}
                       </Link>
                     </li>
                   ))}
                 </ul>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
 
           {/* Customer service */}
@@ -48,7 +45,7 @@ export default function Footer() {
                 <li key={l.label}>
                   <Link
                     href={l.href}
-                    className="text-sm text-slate transition hover:text-wine"
+                    className="text-sm text-slate transition hover:text-forest"
                   >
                     {l.label}
                   </Link>
@@ -66,7 +63,7 @@ export default function Footer() {
               <li>
                 <a
                   href={company.phoneHref}
-                  className="flex items-center gap-2 text-sm text-slate transition hover:text-wine"
+                  className="flex items-center gap-2 text-sm text-slate transition hover:text-forest"
                 >
                   <Icon name="phone" size={16} />
                   {company.phone}
@@ -75,7 +72,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${company.email}`}
-                  className="flex items-center gap-2 break-all text-sm text-slate transition hover:text-wine"
+                  className="flex items-center gap-2 break-all text-sm text-slate transition hover:text-forest"
                 >
                   <Icon name="mail" size={16} />
                   {company.email}
@@ -96,7 +93,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="bg-ink">
+      <div className="bg-forest-dark">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-6 py-5 text-xs text-white/70 sm:flex-row">
           <p>
             &copy; {new Date().getFullYear()} {company.name}. All rights

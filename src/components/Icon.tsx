@@ -30,11 +30,14 @@ const paths: Record<string, React.ReactNode> = {
       <circle cx="12" cy="12" r="3.5" />
     </>
   ),
+  // marquee / frame tent: peaked roof, scalloped valance, legs
   tent: (
     <>
-      <path d="M12 3L3 20h18z" />
-      <path d="M12 3v17" />
-      <path d="M12 20l4-6 4 6" />
+      <path d="M12 3.5 2.5 12m9.5-8.5L21.5 12" />
+      <path d="M2.5 12q2.4 2.2 4.75 0Q9.6 14.2 12 12t4.75 0q2.35 2.2 4.75 0" />
+      <path d="M3.6 13.4V20M20.4 13.4V20" />
+      <path d="M9 20v-3.6a3 3 0 0 1 6 0V20" />
+      <path d="M2.5 20h19" />
     </>
   ),
   stage: (
@@ -78,6 +81,14 @@ const paths: Record<string, React.ReactNode> = {
     <>
       <path d="M5 4h14l-6 7v6" />
       <path d="M9 20h8M4 8h6" />
+    </>
+  ),
+  // interlocking ground-protection panels, in perspective
+  mat: (
+    <>
+      <path d="M2 14l10-5 10 5-10 5z" />
+      <path d="M7 11.5l10 5M12 9v10M17 11.5l-10 5" />
+      <path d="M2 14v2.5l10 5 10-5V14" />
     </>
   ),
   // service icons

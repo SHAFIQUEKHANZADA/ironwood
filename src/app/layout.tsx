@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const inter = Inter({
@@ -14,15 +16,19 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title:
-    "Ironwood Films & Event Rentals | Greater Vancouver Event & Production Rentals",
+  title: {
+    default:
+      "Ironwood Film & Event Rentals | Greater Vancouver Event & Production Rentals",
+    template: "%s | Ironwood Film & Event Rentals",
+  },
   description:
-    "Your trusted source for all things event and film in the Lower Mainland. Ironwood Films & Event Rentals supplies tables, chairs, linens, tents, staging, lighting and production gear across British Columbia.",
+    "Your trusted source for all things event and film in the Lower Mainland. Ironwood Film & Event Rentals supplies tents, tables, chairs, linens, heaters, bars and location gear across British Columbia.",
   keywords: [
     "event rentals Vancouver",
     "film production rentals BC",
     "party rentals Lower Mainland",
     "tent rentals",
+    "ground protection mats",
     "wedding rentals British Columbia",
   ],
 };
@@ -38,7 +44,9 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-foreground">
-        {children}
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );

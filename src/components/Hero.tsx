@@ -30,7 +30,7 @@ export default function Hero() {
 
       <div className="relative mx-auto w-full max-w-7xl px-6 py-20 sm:py-24">
         <div className="max-w-2xl">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-champagne">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-gold">
             {/* service area, echoing the reference site's regional framing */}
             Lower Mainland &amp; British Columbia
           </p>
@@ -52,13 +52,13 @@ export default function Hero() {
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
             <Link
               href="#contact"
-              className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-accent px-9 text-lg font-medium text-white shadow-lg shadow-black/30 transition hover:bg-accent-dark"
+              className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-gold px-9 text-lg font-semibold text-forest-dark shadow-lg shadow-black/30 transition hover:bg-gold-soft"
             >
               Start Your Quote Here
               <Icon name="arrow" size={18} />
             </Link>
             <Link
-              href="#catalog"
+              href="#explore"
               className="inline-flex h-14 items-center justify-center rounded-full border border-white/40 px-8 text-base font-semibold text-white backdrop-blur-sm transition hover:border-white hover:bg-white/10"
             >
               Browse the Catalog

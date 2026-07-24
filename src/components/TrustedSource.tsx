@@ -37,7 +37,7 @@ export default function TrustedSource() {
         <div className="mt-16 grid gap-10 sm:grid-cols-3">
           {points.map((p) => (
             <div key={p.title} className="text-center">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-wine text-white">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-forest text-white">
                 <Icon name={p.icon} size={26} />
               </div>
               <h3 className="mt-5 text-lg font-bold text-ink">{p.title}</h3>

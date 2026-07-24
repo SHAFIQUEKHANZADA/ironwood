@@ -39,7 +39,7 @@ export default function QuoteSection() {
   }
 
   const field =
-    "h-12 w-full rounded-sm border border-black/15 bg-white px-4 text-base text-ink outline-none transition focus:border-wine focus:ring-2 focus:ring-wine/20";
+    "h-12 w-full rounded-sm border border-black/15 bg-white px-4 text-base text-ink outline-none transition focus:border-forest focus:ring-2 focus:ring-forest/20";
 
   return (
     <section id="contact" className="bg-white py-20 sm:py-24">
@@ -50,7 +50,7 @@ export default function QuoteSection() {
             <h2 className="font-display text-4xl font-bold italic text-ink sm:text-5xl">
               Start Your Quote
             </h2>
-            <div className="mt-5 h-0.5 w-16 bg-champagne" />
+            <div className="mt-5 h-0.5 w-16 bg-gold" />
             <p className="mt-6 text-lg leading-relaxed text-slate">
               Tell us the date, the venue and roughly how many people you&apos;re
               hosting — or what your production needs on set. We&apos;ll come
@@ -59,7 +59,7 @@ export default function QuoteSection() {
 
             <dl className="mt-10 space-y-5">
               <div className="flex items-start gap-4">
-                <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cream text-wine">
+                <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cream text-forest">
                   <Icon name="phone" size={20} />
                 </span>
                 <div>
@@ -69,7 +69,7 @@ export default function QuoteSection() {
                   <dd>
                     <a
                       href={company.phoneHref}
-                      className="text-lg font-semibold text-ink transition hover:text-wine"
+                      className="text-lg font-semibold text-ink transition hover:text-forest"
                     >
                       {company.phone}
                     </a>
@@ -78,7 +78,7 @@ export default function QuoteSection() {
               </div>
 
               <div className="flex items-start gap-4">
-                <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cream text-wine">
+                <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cream text-forest">
                   <Icon name="mail" size={20} />
                 </span>
                 <div>
@@ -88,7 +88,7 @@ export default function QuoteSection() {
                   <dd>
                     <a
                       href={`mailto:${company.email}`}
-                      className="break-all text-lg font-semibold text-ink transition hover:text-wine"
+                      className="break-all text-lg font-semibold text-ink transition hover:text-forest"
                     >
                       {company.email}
                     </a>
@@ -97,7 +97,7 @@ export default function QuoteSection() {
               </div>
 
               <div className="flex items-start gap-4">
-                <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cream text-wine">
+                <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cream text-forest">
                   <Icon name="pin" size={20} />
                 </span>
                 <div>
@@ -200,13 +200,13 @@ export default function QuoteSection() {
                   rows={5}
                   required
                   placeholder="What do you need? Guest count, items, delivery details… *"
-                  className="w-full rounded-sm border border-black/15 bg-white px-4 py-3 text-base text-ink outline-none transition focus:border-wine focus:ring-2 focus:ring-wine/20"
+                  className="w-full rounded-sm border border-black/15 bg-white px-4 py-3 text-base text-ink outline-none transition focus:border-forest focus:ring-2 focus:ring-forest/20"
                 />
               </div>
 
               <button
                 type="submit"
-                className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-wine px-8 text-base font-semibold text-white transition hover:bg-wine-soft"
+                className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-forest px-8 text-base font-semibold text-white transition hover:bg-forest-soft"
               >
                 Send Quote Request
                 <Icon name="arrow" size={18} />
