@@ -44,11 +44,11 @@ export default function Inspiration() {
                   type="email"
                   required
                   placeholder="your@email.com"
-                  className="h-12 w-full shrink-0 rounded-sm border border-black/15 px-4 text-base text-ink outline-none transition focus:border-forest focus:ring-2 focus:ring-forest/20 sm:flex-1"
+                  className="h-12 w-full shrink-0 rounded-full border border-black/15 px-5 text-base text-ink outline-none transition focus:border-forest focus:ring-2 focus:ring-forest/20 sm:flex-1"
                 />
                 <button
                   type="submit"
-                  className="h-12 shrink-0 rounded-sm bg-forest px-7 text-base font-semibold text-white transition hover:bg-forest-soft"
+                  className="h-12 shrink-0 rounded-full bg-forest px-8 text-base font-semibold text-white transition hover:bg-forest-soft"
                 >
                   Sign Up
                 </button>
