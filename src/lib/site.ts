@@ -11,11 +11,12 @@ export const company = {
 };
 
 export const navLinks = [
+  { label: "Home", href: "/" },
   { label: "Event Rentals", href: "/event-rentals" },
-  { label: "Film's Tent Rental", href: "/film-tent-rental" },
-  { label: "Our Work", href: "/#portfolio" },
+  { label: "Film's Tents", href: "/film-tent-rental" },
+  { label: "Gallery", href: "/#portfolio" },
   { label: "Services", href: "/#services" },
-  { label: "About", href: "/#about" },
+  { label: "About Us", href: "/#about" },
   { label: "Contact", href: "/#contact" },
 ];
 

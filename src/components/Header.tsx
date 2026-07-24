@@ -3,12 +3,13 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import Icon from "./Icon";
 import { company, navLinks } from "@/lib/site";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
+  const pathname = usePathname();
 
   // Lock body scroll and wire up Escape while the drawer is open.
   useEffect(() => {
@@ -30,95 +31,79 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50">
       {/* ---------------------------------------------------------------
-          Single white bar: logo (left) · nav (centre) ·
-          search + cart icon + Get a Quote (right).
+          Single dark bar: logo (left) · nav (centre) ·
+          Get a Quote (desktop only) + cart (right).
       ---------------------------------------------------------------- */}
-      <div className="border-b border-black/10 bg-white shadow-sm">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-3">
-          {/* Logo */}
+      <div className="border-b border-white/10 bg-night">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
+          {/* Logo — light knockout so it reads on the dark bar */}
           <Link href="/" className="flex shrink-0 items-center">
             <Image
-              src="/logo.png"
+              src="/logo-light.png"
               alt={company.name}
               width={1127}
               height={754}
               priority
-              className="h-14 w-auto sm:h-20"
+              className="h-12 w-auto sm:h-16"
             />
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-7 lg:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-sm font-semibold text-ink transition hover:text-forest"
-              >
-                {link.label}
-              </Link>
-            ))}
+          <nav className="hidden items-center gap-6 lg:flex xl:gap-7">
+            {navLinks.map((link) => {
+              const active = link.href === pathname;
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  aria-current={active ? "page" : undefined}
+                  className={`relative whitespace-nowrap py-1 text-xs font-semibold uppercase tracking-[0.12em] transition ${
+                    active ? "text-gold" : "text-white/85 hover:text-gold"
+                  }`}
+                >
+                  {link.label}
+                  {active && (
+                    <span className="absolute -bottom-0.5 left-0 h-0.5 w-full bg-gold" />
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Right cluster */}
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-            <button
-              type="button"
-              aria-label="Search"
-              aria-expanded={searchOpen}
-              onClick={() => setSearchOpen((v) => !v)}
-              className="hidden rounded-full p-2 text-ink transition hover:bg-cream hover:text-forest sm:inline-flex"
+            {/* Quote CTA — desktop/tablet only; phones get it in the drawer */}
+            <Link
+              href="/#contact"
+              className="hidden rounded-md bg-gold px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-night shadow-sm transition hover:bg-gold-soft sm:inline-block sm:px-6"
             >
-              <Icon name="search" size={22} strokeWidth={2} />
-            </button>
+              Get a Quote
+            </Link>
 
             {/* Cart — icon only */}
             <button
               type="button"
               aria-label="View your cart"
-              className="relative rounded-full p-2 text-ink transition hover:bg-cream hover:text-forest"
+              className="relative rounded-full p-2 text-white/85 transition hover:bg-white/10 hover:text-gold"
             >
               <Icon name="cart" size={24} strokeWidth={1.8} />
-              <span className="absolute right-0 top-0 flex h-4.5 min-w-4.5 items-center justify-center rounded-full bg-forest px-1 text-[10px] font-bold text-white">
+              <span className="absolute right-0 top-0 flex h-4.5 min-w-4.5 items-center justify-center rounded-full bg-gold px-1 text-[10px] font-bold text-night">
                 0
               </span>
             </button>
-
-            <Link
-              href="/#contact"
-              className="rounded-full bg-forest px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-forest-dark sm:px-7 sm:text-base"
-            >
-              Get a Quote
-            </Link>
 
             <button
               type="button"
               aria-label="Toggle menu"
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
-              className="-mr-1 rounded-full p-1.5 text-ink transition hover:bg-cream lg:hidden"
+              className="-mr-1 rounded-md p-1.5 text-white transition hover:bg-white/10 lg:hidden"
             >
               <Icon name={open ? "close" : "menu"} size={28} strokeWidth={2.2} />
             </button>
           </div>
         </div>
 
-        {/* Search drawer */}
-        {searchOpen && (
-          <div className="border-t border-black/10 bg-cream">
-            <div className="mx-auto max-w-7xl px-4 py-3">
-              <label htmlFor="site-search" className="sr-only">
-                Search the catalog
-              </label>
-              <input
-                id="site-search"
-                type="search"
-                placeholder="Search entire store here…"
-                className="h-11 w-full rounded-sm border border-black/15 bg-white px-4 text-base text-ink outline-none placeholder:text-slate/70 focus:border-forest focus:ring-2 focus:ring-forest/20"
-              />
-            </div>
-          </div>
-        )}
       </div>
 
       {/* ---------------------------------------------------------------

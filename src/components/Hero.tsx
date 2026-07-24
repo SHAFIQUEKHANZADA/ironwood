@@ -5,63 +5,74 @@ import Icon from "./Icon";
 /**
  * Hero.
  *
- * Background photo lives at /public/hero-event.jpg (Unsplash License, free for
- * commercial use, no attribution required). To swap in your own photography,
- * drop a wide (≥2000px) landscape shot at that path — ideally something dark or
- * shot at dusk, since the headline sits over it in white. The gradient scrim
- * below handles the rest of the contrast.
+ * Two background photos so each orientation gets a properly framed crop:
+ *   /public/hero.png     — landscape, used from `sm` up (desktop/tablet)
+ *   /public/hero-bg.png  — portrait, used below `sm` (phones)
+ * To change either, replace the file at that path. The gradient scrims below
+ * handle contrast for the white headline.
  */
 export default function Hero() {
   return (
     <section className="relative isolate flex min-h-140 items-center overflow-hidden sm:min-h-160 lg:min-h-180">
+      {/* Mobile (portrait crop) */}
       <Image
-        src="/hero-event.jpg"
-        alt="Guests dining at a long table beneath warm string lights at an outdoor evening event"
+        src="/hero-bg.png"
+        alt="Evening event set up with tables, chairs and string lighting"
         fill
         priority
         sizes="100vw"
-        className="-z-10 object-cover"
+        className="-z-10 object-cover sm:hidden"
+      />
+      {/* Desktop / tablet (landscape crop) */}
+      <Image
+        src="/hero.png"
+        alt="Evening event set up with tables, chairs and string lighting"
+        fill
+        priority
+        sizes="100vw"
+        className="-z-10 hidden object-cover sm:block"
       />
 
-      {/* readability scrim: heavier on the left where the copy sits, plus a
-          gentle bottom fade so the section meets the next one cleanly */}
-      <div className="absolute inset-0 -z-10 bg-linear-to-r from-black/80 via-black/45 to-black/10" />
-      <div className="absolute inset-0 -z-10 bg-linear-to-t from-black/45 via-transparent to-black/25" />
+      {/* readability scrim: heavy on the left where the copy sits, so the
+          headline stays legible while the lit scene shows through on the right */}
+      <div className="absolute inset-0 -z-10 bg-linear-to-r from-night/95 via-night/62 to-night/8" />
+      <div className="absolute inset-0 -z-10 bg-linear-to-t from-night/55 via-transparent to-night/35" />
 
       <div className="relative mx-auto w-full max-w-7xl px-6 py-20 sm:py-24">
-        <div className="max-w-2xl">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-gold">
-            {/* service area, echoing the reference site's regional framing */}
-            Lower Mainland &amp; British Columbia
+        <div className="max-w-3xl">
+          <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.3em] text-gold sm:text-sm">
+            Events. Equipment. Experience.
           </p>
 
-          <h1 className="font-display text-5xl font-bold italic leading-[1.05] text-white drop-shadow-lg sm:text-6xl lg:text-7xl">
-            Greater Vancouver
+          <h1 className="text-4xl font-semibold uppercase leading-[1.02] tracking-tight text-white drop-shadow-lg sm:text-5xl lg:text-6xl xl:text-7xl">
+            We equip
+            <br />
+            your <span className="text-gold">vision.</span>
+            <br />
+            You create
+            <br />
+            the moment.
           </h1>
 
-          <p className="mt-4 text-3xl font-light leading-tight text-white drop-shadow-md sm:text-4xl lg:text-5xl">
-            Event &amp; Production Rentals
+          <p className="mt-7 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
+            From unforgettable events to cinematic productions, we provide
+            premium rentals and expert support to bring your vision to life.
           </p>
 
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
-            Tables, chairs, linens, tents, staging, lighting and full film
-            production gear — delivered, set up and struck by a crew that knows
-            the region.
-          </p>
-
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
             <Link
               href="#contact"
-              className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-gold px-9 text-lg font-semibold text-forest-dark shadow-lg shadow-black/30 transition hover:bg-gold-soft"
+              className="inline-flex h-14 items-center justify-center gap-3 rounded-md bg-gold px-8 text-sm font-bold uppercase tracking-[0.12em] text-night shadow-lg shadow-black/30 transition hover:bg-gold-soft"
             >
-              Start Your Quote Here
+              Get a Quote
               <Icon name="arrow" size={18} />
             </Link>
             <Link
               href="#explore"
-              className="inline-flex h-14 items-center justify-center rounded-full border border-white/40 px-8 text-base font-semibold text-white backdrop-blur-sm transition hover:border-white hover:bg-white/10"
+              className="inline-flex h-14 items-center justify-center gap-3 rounded-md border border-white/50 px-8 text-sm font-bold uppercase tracking-[0.12em] text-white backdrop-blur-sm transition hover:border-gold hover:bg-white/10 hover:text-gold"
             >
-              Browse the Catalog
+              Browse Catalog
+              <Icon name="arrow" size={18} />
             </Link>
           </div>
         </div>

@@ -13,6 +13,7 @@
   --forest: #1c3a30;      /* primary deep green (dark sections, buttons) */
   --forest-dark: #12271f; /* deeper green for gradients/hover */
   --forest-soft: #2f5c4c; /* lighter green accents */
+  --night: #0e1310;       /* near-black header bar / hero scrim */
 
   --ink: #16241e;         /* headings on light — green-leaning charcoal */
   --slate: #4b5563;       /* body text */
@@ -31,6 +32,7 @@
   --color-forest: var(--forest);
   --color-forest-dark: var(--forest-dark);
   --color-forest-soft: var(--forest-soft);
+  --color-night: var(--night);
   --color-ink: var(--ink);
   --color-slate: var(--slate);
   --color-gold: var(--gold);
