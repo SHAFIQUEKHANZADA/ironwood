@@ -27,7 +27,7 @@ export default function TrustedSource() {
             Your Trusted Source for All Things Event &amp; Film
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-slate">
-            Ironwood Films &amp; Event Rentals outfits weddings, corporate
+            Ironwood Film&apos;s &amp; Event Rentals outfits weddings, corporate
             events, private parties and film productions across the Lower
             Mainland. Quality inventory, straight pricing, and a crew that shows
             up when it says it will.

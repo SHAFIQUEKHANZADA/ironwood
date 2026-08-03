@@ -6,7 +6,7 @@ import { company, type RentalTrack } from "@/lib/site";
 
 /**
  * Full page for one rental track: banner, category grid, then a quote CTA.
- * Shared by /event-rentals and /film-tent-rental.
+ * Shared by /event-rentals and /film-rental.
  */
 export default function TrackPage({ track }: { track: RentalTrack }) {
   return (

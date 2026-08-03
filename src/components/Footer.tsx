@@ -85,7 +85,7 @@ export default function Footer() {
             </ul>
 
             <p className="mt-7 font-display text-lg italic text-ink">
-              Event &amp; film rentals,{" "}
+              Film&apos;s &amp; event rentals,{" "}
               <span className="whitespace-nowrap">done right.</span>
             </p>
           </div>

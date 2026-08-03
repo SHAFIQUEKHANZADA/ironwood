@@ -1,7 +1,7 @@
 // Central place for company details and site content.
 
 export const company = {
-  name: "Ironwood Film & Event Rentals",
+  name: "Ironwood Film's & Event Rentals",
   shortName: "Ironwood",
   email: "iwfilmrentals@gmail.com",
   phone: "778-385-1498",
@@ -12,8 +12,8 @@ export const company = {
 
 export const navLinks = [
   { label: "Home", href: "/" },
+  { label: "Film's Rental", href: "/film-rental" },
   { label: "Event Rentals", href: "/event-rentals" },
-  { label: "Film's Tents", href: "/film-tent-rental" },
   { label: "Gallery", href: "/#portfolio" },
   { label: "Services", href: "/#services" },
   { label: "About Us", href: "/#about" },
@@ -56,6 +56,41 @@ export type RentalTrack = {
  */
 export const tracks: RentalTrack[] = [
   {
+    key: "film",
+    name: "Film's Rental",
+    slug: "film-rental",
+    blurb:
+      "Tents, heat and ground protection for productions of every size, across the Lower Mainland.",
+    icon: "clapper",
+    image: "/categories/film-production.jpg",
+    categories: [
+      {
+        name: "Pop-up Canopy",
+        slug: "pop-up-canopy",
+        blurb: "10×10 & 10×20 instant shelters for set & basecamp",
+        icon: "tent",
+        gradient: ["#3a3d42", "#16181b"],
+        image: "/categories/pop-up-canopy.png",
+      },
+      {
+        name: "Heaters",
+        slug: "heaters",
+        blurb: "Keep cast and crew warm on location",
+        icon: "heat",
+        gradient: ["#6b5a2f", "#2f2712"],
+        image: "/categories/heaters.jpg",
+      },
+      {
+        name: "Ground Protection Mats",
+        slug: "ground-protection-mats",
+        blurb: "Turf protection, trackway & vehicle access",
+        icon: "mat",
+        gradient: ["#3c6b57", "#12271f"],
+        image: "/categories/ground-protection-mats.png",
+      },
+    ],
+  },
+  {
     key: "event",
     name: "Event Rentals",
     slug: "event-rentals",
@@ -65,12 +100,12 @@ export const tracks: RentalTrack[] = [
     image: "/inspiration.jpg",
     categories: [
       {
-        name: "Tents",
-        slug: "tent",
-        blurb: "Frame tents, sailcloth, sidewalls & flooring",
+        name: "Pop-up Canopy",
+        slug: "pop-up-canopy",
+        blurb: "10×10 & 10×20 instant shelters for any event",
         icon: "tent",
-        gradient: ["#2f5c4c", "#12271f"],
-        image: "/categories/tent.jpg",
+        gradient: ["#3a3d42", "#16181b"],
+        image: "/categories/pop-up-canopy.png",
       },
       {
         name: "Tables",
@@ -111,42 +146,6 @@ export const tracks: RentalTrack[] = [
         icon: "bar",
         gradient: ["#3f5f70", "#1a2b33"],
         image: "/categories/bars.jpg",
-      },
-    ],
-  },
-  {
-    key: "film",
-    name: "Film's Tent Rental",
-    slug: "film-tent-rental",
-    blurb:
-      "Tents, heat and ground protection for productions of every size, across the Lower Mainland.",
-    icon: "clapper",
-    image: "/categories/film-production.jpg",
-    categories: [
-      {
-        name: "Tents",
-        slug: "tent",
-        blurb: "Crew shelter, basecamp & catering tents",
-        icon: "tent",
-        gradient: ["#2f5c4c", "#12271f"],
-        image: "/categories/tent.jpg",
-      },
-      {
-        name: "Heaters",
-        slug: "heaters",
-        blurb: "Keep cast and crew warm on location",
-        icon: "heat",
-        gradient: ["#6b5a2f", "#2f2712"],
-        image: "/categories/heaters.jpg",
-      },
-      {
-        name: "Ground Protection Mats",
-        slug: "ground-protection-mats",
-        blurb: "Turf protection, trackway & vehicle access",
-        icon: "mat",
-        gradient: ["#3c6b57", "#12271f"],
-        // No photo yet — add /public/categories/ground-protection-mats.jpg
-        // and set `image` here to swap the fallback for a real shot.
       },
     ],
   },

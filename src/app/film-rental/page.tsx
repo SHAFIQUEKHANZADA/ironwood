@@ -9,6 +9,6 @@ export const metadata: Metadata = {
   description: track.blurb,
 };
 
-export default function FilmTentRentalPage() {
+export default function FilmRentalPage() {
   return <TrackPage track={track} />;
 }

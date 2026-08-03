@@ -17,7 +17,6 @@ export const gallery: GalleryItem[] = [
     src: "/gallery/cocktail-tables-patio.png",
     caption: "Cocktail hour on the patio",
     tag: "Wooden cocktail tables + white linens",
-    span: "wide",
   },
   {
     src: "/inspiration.jpg",
@@ -39,10 +38,5 @@ export const gallery: GalleryItem[] = [
     caption: "Long-table dinner",
     tag: "Tables, chairs + festoon lighting",
     span: "wide",
-  },
-  {
-    src: "/categories/tent.jpg",
-    caption: "Frame tent on site",
-    tag: "Tents + flooring",
   },
 ];

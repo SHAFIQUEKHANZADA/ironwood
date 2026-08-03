@@ -9,7 +9,26 @@ import { company, navLinks } from "@/lib/site";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  // On the home page the header floats over the hero photo and only gains its
+  // green background once the user scrolls past the top. Every other page keeps
+  // a solid header in normal flow (their content starts right under it).
+  const isHome = pathname === "/";
+
+  useEffect(() => {
+    // On non-home pages `overlay` is false regardless of `scrolled`, so we only
+    // need the listener on the home page.
+    if (!isHome) return;
+    const onScroll = () => setScrolled(window.scrollY > 80);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isHome]);
+
+  // Transparent-overlay mode: only at the very top of the home page.
+  const overlay = isHome && !scrolled;
 
   // Lock body scroll and wire up Escape while the drawer is open.
   useEffect(() => {
@@ -29,12 +48,22 @@ export default function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50">
+    <header
+      className={`${isHome ? "fixed" : "sticky"} inset-x-0 top-0 z-50`}
+    >
       {/* ---------------------------------------------------------------
-          Single dark bar: logo (left) · nav (centre) ·
-          Get a Quote (desktop only) + cart (right).
+          Single green bar: logo (left) · nav (centre) ·
+          phone + Get a Quote (right).
+          Transparent over the hero at the top of the home page; fades to
+          solid green on scroll.
       ---------------------------------------------------------------- */}
-      <div className="border-b border-white/10 bg-night">
+      <div
+        className={`border-b transition-colors duration-300 ${
+          overlay
+            ? "border-transparent bg-transparent"
+            : "border-white/10 bg-forest shadow-sm"
+        }`}
+      >
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
           {/* Logo — light knockout so it reads on the dark bar */}
           <Link href="/" className="flex shrink-0 items-center">
@@ -71,26 +100,25 @@ export default function Header() {
           </nav>
 
           {/* Right cluster */}
-          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-4">
+            {/* Click-to-call — number shown on every breakpoint */}
+            <a
+              href={company.phoneHref}
+              className="flex items-center gap-2 text-white transition hover:text-gold"
+            >
+              <Icon name="phone" size={18} strokeWidth={1.8} />
+              <span className="whitespace-nowrap text-[13px] font-semibold tracking-wide sm:text-sm">
+                {company.phone}
+              </span>
+            </a>
+
             {/* Quote CTA — desktop/tablet only; phones get it in the drawer */}
             <Link
               href="/#contact"
-              className="hidden rounded-md bg-gold px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-night shadow-sm transition hover:bg-gold-soft sm:inline-block sm:px-6"
+              className="hidden rounded-md bg-gold px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-forest-dark shadow-sm transition hover:bg-gold-soft sm:inline-block sm:px-6"
             >
               Get a Quote
             </Link>
-
-            {/* Cart — icon only */}
-            <button
-              type="button"
-              aria-label="View your cart"
-              className="relative rounded-full p-2 text-white/85 transition hover:bg-white/10 hover:text-gold"
-            >
-              <Icon name="cart" size={24} strokeWidth={1.8} />
-              <span className="absolute right-0 top-0 flex h-4.5 min-w-4.5 items-center justify-center rounded-full bg-gold px-1 text-[10px] font-bold text-night">
-                0
-              </span>
-            </button>
 
             <button
               type="button"

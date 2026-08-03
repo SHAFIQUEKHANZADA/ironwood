@@ -18,11 +18,11 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: {
     default:
-      "Ironwood Film & Event Rentals | Greater Vancouver Event & Production Rentals",
-    template: "%s | Ironwood Film & Event Rentals",
+      "Ironwood Film's & Event Rentals | Greater Vancouver Event & Production Rentals",
+    template: "%s | Ironwood Film's & Event Rentals",
   },
   description:
-    "Your trusted source for all things event and film in the Lower Mainland. Ironwood Film & Event Rentals supplies tents, tables, chairs, linens, heaters, bars and location gear across British Columbia.",
+    "Your trusted source for all things event and film in the Lower Mainland. Ironwood Film's & Event Rentals supplies tents, tables, chairs, linens, heaters, bars and location gear across British Columbia.",
   keywords: [
     "event rentals Vancouver",
     "film production rentals BC",

@@ -67,34 +67,6 @@ export default function ExploreRentals() {
             </Link>
           ))}
         </div>
-
-        {/* Catalog search */}
-        <form
-          action="/event-rentals"
-          className="mt-8 flex flex-col gap-3 rounded-xl bg-forest p-3 shadow-lg sm:flex-row sm:items-center sm:gap-0"
-        >
-          <label htmlFor="catalog-search" className="sr-only">
-            Search the rental catalog
-          </label>
-          <span className="hidden pl-4 pr-3 text-gold sm:block">
-            <Icon name="search" size={24} strokeWidth={2} />
-          </span>
-          <input
-            id="catalog-search"
-            name="q"
-            type="search"
-            placeholder="Search tents, chairs, tables, heaters, flooring…"
-            className="h-12 w-full shrink-0 rounded-md bg-white/5 px-4 text-base text-white outline-none placeholder:text-white/45 focus:bg-white/10 sm:h-12 sm:flex-1 sm:rounded-none sm:bg-transparent sm:px-0 sm:focus:bg-transparent"
-          />
-          <span className="hidden h-8 w-px bg-white/15 sm:mx-4 sm:block" />
-          <button
-            type="submit"
-            className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-md bg-gold px-7 text-xs font-bold uppercase tracking-widest text-forest-dark transition hover:bg-gold-soft"
-          >
-            Find Products
-            <Icon name="arrow" size={16} />
-          </button>
-        </form>
       </div>
     </section>
   );

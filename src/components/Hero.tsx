@@ -13,7 +13,7 @@ import Icon from "./Icon";
  */
 export default function Hero() {
   return (
-    <section className="relative isolate flex min-h-140 items-center overflow-hidden sm:min-h-160 lg:min-h-180">
+    <section className="relative isolate flex min-h-152 items-center overflow-hidden sm:min-h-160 lg:min-h-180">
       {/* Mobile (portrait crop) */}
       <Image
         src="/hero-bg.png"
@@ -38,7 +38,9 @@ export default function Hero() {
       <div className="absolute inset-0 -z-10 bg-linear-to-r from-night/95 via-night/62 to-night/8" />
       <div className="absolute inset-0 -z-10 bg-linear-to-t from-night/55 via-transparent to-night/35" />
 
-      <div className="relative mx-auto w-full max-w-7xl px-6 py-20 sm:py-24">
+      {/* extra top padding clears the fixed, transparent header — more on
+          mobile so the copy sits comfortably below the nav */}
+      <div className="relative mx-auto w-full max-w-7xl px-6 pb-20 pt-40 sm:pb-24 sm:pt-36 lg:pt-40">
         <div className="max-w-3xl">
           <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.3em] text-gold sm:text-sm">
             Events. Equipment. Experience.

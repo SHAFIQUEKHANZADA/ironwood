@@ -25,18 +25,18 @@ export type Product = {
 };
 
 export const products: Product[] = [
-  // ── Tents ──────────────────────────────────────────────────────────────
+  // ── Pop-up Canopy ──────────────────────────────────────────────────────
   {
     name: "10×10 Pop-Up Canopy",
     slug: "10x10-pop-up-canopy",
     spec: "10' × 10' instant shelter · adjustable legs",
-    categorySlug: "tent",
+    categorySlug: "pop-up-canopy",
   },
   {
     name: "10×20 Pop-Up Canopy",
     slug: "10x20-pop-up-canopy",
     spec: "10' × 20' instant shelter · adjustable legs",
-    categorySlug: "tent",
+    categorySlug: "pop-up-canopy",
   },
 
   // ── Tables ─────────────────────────────────────────────────────────────
@@ -69,6 +69,68 @@ export const products: Product[] = [
     slug: "wooden-cocktail-table",
     spec: "Tall highboy · wood top, chrome column",
     categorySlug: "tables",
+  },
+
+  // ── Chairs ─────────────────────────────────────────────────────────────
+  {
+    name: "Garden Chairs",
+    slug: "garden-chairs",
+    spec: "White padded resin folding · wedding-ready",
+    categorySlug: "chairs",
+  },
+  {
+    name: "Black Plastic Folding Chairs",
+    slug: "black-plastic-folding-chairs",
+    spec: "Sturdy, stackable · indoor or out",
+    categorySlug: "chairs",
+  },
+  {
+    name: "White Plastic Folding Chairs",
+    slug: "white-plastic-folding-chairs",
+    spec: "Sturdy, stackable · indoor or out",
+    categorySlug: "chairs",
+  },
+  {
+    name: "Clear Chivari Chairs",
+    slug: "clear-chivari-chairs",
+    spec: "Crystal resin · elegant banquet seating",
+    categorySlug: "chairs",
+  },
+
+  // ── Heaters ────────────────────────────────────────────────────────────
+  {
+    name: "Patio Heater",
+    slug: "patio-heater",
+    spec: "Propane mushroom heater · freestanding",
+    categorySlug: "heaters",
+  },
+  {
+    name: "Frost Fighter IDF350 Indirect Fired Portable Heater",
+    slug: "frost-fighter-idf350",
+    spec: "Indirect-fired · clean heat for tents & sets",
+    categorySlug: "heaters",
+  },
+
+  // ── Bars ───────────────────────────────────────────────────────────────
+  {
+    name: "LED Bar",
+    slug: "led-bar",
+    spec: "Colour-changing glow bar · portable",
+    categorySlug: "bars",
+  },
+
+  // ── Ground Protection Mats ─────────────────────────────────────────────
+  {
+    name: "Ground Protection Mats 4×8ft",
+    slug: "ground-protection-mats-4x8ft",
+    spec: "4' × 8' panels · turf & trackway protection",
+    categorySlug: "ground-protection-mats",
+  },
+  {
+    name: "Multi Mover Hand Truck",
+    slug: "multi-mover-hand-truck",
+    spec: "4-wheel convertible dolly · heavy loads",
+    categorySlug: "ground-protection-mats",
   },
 ];
 
