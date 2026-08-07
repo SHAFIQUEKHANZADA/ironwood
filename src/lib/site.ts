@@ -12,7 +12,7 @@ export const company = {
 
 export const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Film's Rental", href: "/film-rental" },
+  { label: "Film's Rentals", href: "/film-rentals" },
   { label: "Event Rentals", href: "/event-rentals" },
   { label: "Gallery", href: "/#portfolio" },
   { label: "Services", href: "/#services" },
@@ -57,8 +57,8 @@ export type RentalTrack = {
 export const tracks: RentalTrack[] = [
   {
     key: "film",
-    name: "Film's Rental",
-    slug: "film-rental",
+    name: "Film's Rentals",
+    slug: "film-rentals",
     blurb:
       "Tents, heat and ground protection for productions of every size, across the Lower Mainland.",
     icon: "clapper",
@@ -86,7 +86,7 @@ export const tracks: RentalTrack[] = [
         blurb: "Turf protection, trackway & vehicle access",
         icon: "mat",
         gradient: ["#3c6b57", "#12271f"],
-        image: "/categories/ground-protection-mats.png",
+        image: "/categories/ground-protection-mats-roadway.png",
       },
     ],
   },

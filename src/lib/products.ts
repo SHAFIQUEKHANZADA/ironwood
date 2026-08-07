@@ -127,6 +127,12 @@ export const products: Product[] = [
     categorySlug: "ground-protection-mats",
   },
   {
+    name: "Ground Protection Mat Roadway",
+    slug: "ground-protection-mat-roadway",
+    spec: "Interlocking panels · vehicle & equipment access",
+    categorySlug: "ground-protection-mats",
+  },
+  {
     name: "Multi Mover Hand Truck",
     slug: "multi-mover-hand-truck",
     spec: "4-wheel convertible dolly · heavy loads",

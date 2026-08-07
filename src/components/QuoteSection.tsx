@@ -7,35 +7,54 @@ import { company } from "@/lib/site";
 /**
  * Quote request form.
  *
- * There's no backend on this site yet, so submitting composes a pre-filled
- * email to the shop instead of silently posting into the void. When an email
- * service or form endpoint is added, swap `handleSubmit` for a fetch() to it.
+ * Submits to Web3Forms (https://web3forms.com), which emails the entry to the
+ * shop. The access key is public by design — Web3Forms keys are meant to live
+ * in the client. To change the destination inbox, generate a new key in the
+ * Web3Forms dashboard and set NEXT_PUBLIC_WEB3FORMS_KEY (falls back to the key
+ * below).
  */
+const WEB3FORMS_ACCESS_KEY =
+  process.env.NEXT_PUBLIC_WEB3FORMS_KEY ??
+  "a8c6af9e-b4b3-460b-85a0-a82350197276";
+
+type Status = "idle" | "sending" | "success" | "error";
+
 export default function QuoteSection() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const get = (k: string) => String(data.get(k) ?? "").trim();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const name = String(data.get("name") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
 
-    const body = [
-      `Name: ${get("name")}`,
-      `Email: ${get("email")}`,
-      `Phone: ${get("phone")}`,
-      `Event date: ${get("date")}`,
-      `Event type: ${get("type")}`,
-      `Location / venue: ${get("location")}`,
-      "",
-      "What they need:",
-      get("message"),
-    ].join("\n");
+    data.append("access_key", WEB3FORMS_ACCESS_KEY);
+    data.append(
+      "subject",
+      `Rental quote request${name ? ` — ${name}` : ""}`
+    );
+    data.append("from_name", "Ironwood Website");
+    // Reply-To the customer, so hitting "Reply" in the inbox goes to them.
+    if (email) data.append("replyto", email);
 
-    const subject = `Rental quote request — ${get("name") || "New enquiry"}`;
-    window.location.href = `mailto:${company.email}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-    setSent(true);
+    setStatus("sending");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+      });
+      const json = await res.json();
+      if (json.success) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   }
 
   const field =
@@ -115,6 +134,17 @@ export default function QuoteSection() {
           {/* Form */}
           <div className="rounded-sm bg-cream p-8 sm:p-10">
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Honeypot — bots fill this; real users never see it */}
+              <input
+                type="checkbox"
+                name="botcheck"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="hidden"
+                style={{ display: "none" }}
+              />
+
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
                   <label htmlFor="name" className="sr-only">
@@ -206,20 +236,27 @@ export default function QuoteSection() {
 
               <button
                 type="submit"
-                className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-forest px-8 text-base font-semibold text-white transition hover:bg-forest-soft"
+                disabled={status === "sending"}
+                className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-forest px-8 text-base font-semibold text-white transition hover:bg-forest-soft disabled:cursor-not-allowed disabled:opacity-70"
               >
-                Send Quote Request
-                <Icon name="arrow" size={18} />
+                {status === "sending" ? "Sending…" : "Send Quote Request"}
+                {status !== "sending" && <Icon name="arrow" size={18} />}
               </button>
 
               <p
                 aria-live="polite"
-                className="min-h-5 text-center text-sm text-slate"
+                className={`min-h-5 text-center text-sm ${
+                  status === "error"
+                    ? "text-red-600"
+                    : status === "success"
+                      ? "font-semibold text-forest"
+                      : "text-slate"
+                }`}
               >
-                {sent
-                  ? "Your email app should have opened with the details filled in. If it didn't, email us directly at " +
-                    company.email
-                  : ""}
+                {status === "success" &&
+                  "Thanks! Your request has been sent — we'll be in touch shortly."}
+                {status === "error" &&
+                  `Something went wrong. Please email us directly at ${company.email}.`}
               </p>
             </form>
           </div>

@@ -47,6 +47,19 @@ export default function Header() {
     };
   }, [open]);
 
+  // Click-to-call — rendered in the right cluster on desktop, centre on mobile.
+  const phoneLink = (
+    <a
+      href={company.phoneHref}
+      className="flex items-center gap-2 text-white transition hover:text-gold"
+    >
+      <Icon name="phone" size={18} strokeWidth={1.8} />
+      <span className="whitespace-nowrap text-[13px] font-semibold tracking-wide sm:text-sm">
+        {company.phone}
+      </span>
+    </a>
+  );
+
   return (
     <header
       className={`${isHome ? "fixed" : "sticky"} inset-x-0 top-0 z-50`}
@@ -64,7 +77,12 @@ export default function Header() {
             : "border-white/10 bg-forest shadow-sm"
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
+        <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
+          {/* Phone — absolutely centred on mobile/tablet only */}
+          <div className="absolute inset-y-0 left-1/2 flex -translate-x-1/2 items-center lg:hidden">
+            {phoneLink}
+          </div>
+
           {/* Logo — light knockout so it reads on the dark bar */}
           <Link href="/" className="flex shrink-0 items-center">
             <Image
@@ -101,16 +119,8 @@ export default function Header() {
 
           {/* Right cluster */}
           <div className="flex shrink-0 items-center gap-2 sm:gap-4">
-            {/* Click-to-call — number shown on every breakpoint */}
-            <a
-              href={company.phoneHref}
-              className="flex items-center gap-2 text-white transition hover:text-gold"
-            >
-              <Icon name="phone" size={18} strokeWidth={1.8} />
-              <span className="whitespace-nowrap text-[13px] font-semibold tracking-wide sm:text-sm">
-                {company.phone}
-              </span>
-            </a>
+            {/* Click-to-call — desktop keeps it here in the cluster */}
+            <span className="hidden lg:block">{phoneLink}</span>
 
             {/* Quote CTA — desktop/tablet only; phones get it in the drawer */}
             <Link
